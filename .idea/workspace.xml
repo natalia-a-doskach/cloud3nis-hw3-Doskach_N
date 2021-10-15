@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ae920b1-3453-47f9-8d43-26bf09f90d15" name="Default Changelist" comment="" />
+    <list default="true" id="5ae920b1-3453-47f9-8d43-26bf09f90d15" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChangeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/ChangeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CreateScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/CreateScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/6.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.9/fileHashes/fileHashes.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1zVRiOyryDFBnnxkdVJjHEGDJ4M" />
   <component name="ProjectViewState">

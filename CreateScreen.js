@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View,Button, TextInput, Image, BackHandler } from 'react-native';
+import { StyleSheet, Text, View,Button, TextInput, Image, BackHandler, Pressable, ScrollView, Dimensions, SafeAreaView } from 'react-native';
 import { Context } from './Context';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
@@ -41,42 +41,46 @@ class CreateScreen extends React.Component {
     }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Add a note!</Text>
-        <TextInput
+    <SafeAreaView style={styles.container}>
+        <TextInput style={styles.forms}
         onChangeText={value => this.setState({ title: value })}
         placeholder= "title"
+        placeholderStyle={styles.body}
         />
-        <TextInput
+        <TextInput style={styles.body} multiline={true} textAlign={'left'}
         onChangeText={value => this.setState({ note: value })}
         placeholder="note"
+        placeholderStyle={styles.body}
         />
-                <Button
-                  title="Back to home"
-                  onPress={() =>
-                 {let note = {
-                    "title": this.state.title,
-                    "note": this.state.note,
-                    "images": this.state.fileUris
-                  }
-                  this.context.addNote(note)
-                  this.props.navigation.navigate('Home')}
-                  }
-                />
-                <Button
-                  title={this.state.fileUris.length == 0? "Add Picture" : "Add More Pictures"}
+                        <ScrollView horizontal={true} snapToInterval={Dimensions.get('screen').width} >
+                                       {
+                                          this.state.fileUris.map((uri, index) => (
+                                          <Image
+                                                key={index}
+                                                style={styles.image}
+                                                source={{uri: uri
+                                              }}/>
+                                          ))
+                                        }
+                    </ScrollView>
+                <Pressable
+                style={styles.button}
                   onPress={this.launchImageLibrary}
-                />
-                               {
-                                  this.state.fileUris.map((uri, index) => (
-                                  <Image
-                                        id={uri}
-                                        style={{width: 100, height: 100}}
-                                        source={{uri: uri
-                                      }}/>
-                                  ))
-                                }
-      </View>
+                >{this.state.fileUris.length == 0?<Text style={styles.text}>Add A Picture</Text>:<Text style={styles.text}>Add Pictures</Text>}</Pressable>
+                   <Pressable
+                   title="Add a Note"
+                   style={styles.button}
+                     onPress={() =>
+                    {let note = {
+                       "title": this.state.title==""?"Untitled":this.state.title,
+                       "note": this.state.note,
+                       "images": this.state.fileUris
+                     }
+                     this.context.addNote(note)
+                     this.props.navigation.navigate('Home')}
+                     }
+                   ><Text style={styles.text}>Save Note</Text></Pressable>
+      </SafeAreaView>
     );
   }
 }
@@ -88,7 +92,63 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+    padding: "5%"
+  },
+    scroll: {
+      flex: 1,
+      width: "100%",
+    },
+    body: {
+          width: "100%",
+          flex: 3,
+          paddingVertical: 15,
+          marginVertical:3,
+          padding: 15,
+          borderRadius: 10,
+          textAlignVertical: 'top',
+          backgroundColor: '#BCDCF9',
+          textColor: 'black',
+                    fontSize: 16,
+                    lineHeight: 21,
+                    letterSpacing: 0.25,
+    },
+    image: {
+    width: 100,
+    height: undefined,
+    },
+  button: {
+    alignItems: 'center',
+    width: "100%",
     justifyContent: 'center',
+    margin: 15,
+    marginVertical:3,
+    paddingVertical: 15,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: '#108afc',
+    textColor: 'white'
+  },
+    forms: {
+      alignItems: 'center',
+      width: "100%",
+      justifyContent: 'center',
+      paddingVertical: 15,
+      marginVertical:3,
+      borderRadius: 10,
+      backgroundColor: '#BCDCF9',
+      textColor: 'black',
+          fontSize: 16,
+          lineHeight: 21,
+          letterSpacing: 0.25,
+                    padding: 15,
+    },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });
 
