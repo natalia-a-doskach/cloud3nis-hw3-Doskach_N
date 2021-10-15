@@ -152,7 +152,6 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     borderRadius: 10,
     backgroundColor: '#BCDCF9',
-    textColor: 'black',
     fontSize: 16,
     lineHeight: 21,
     letterSpacing: 0.25,
